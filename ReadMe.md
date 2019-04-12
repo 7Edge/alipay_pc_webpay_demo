@@ -107,3 +107,8 @@
 7. 在项目根目录下，进入虚拟环境：pipenv shell
 8. 配置好数据库后进行数据迁移：python manage.py makemigrations;python manage.py migrate
 9. 运行项目： python manage.py runserver 0.0.0.0:80
+
+## 
+1. 如果是使用的ali云ECS，注意访问白名单加上0.0.0.0，因为阿里云会拦截频繁访问外网地址，导致开始后异步回调能收到
+多几次调试后，异步回调收不到了。
+2. 保护好自己的RSA key.
