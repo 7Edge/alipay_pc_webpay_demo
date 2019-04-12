@@ -3,6 +3,7 @@
 [toc]
 
 > 项目基于django，开发通过支付宝网页支付接口，完成待支付订单的支付业务。
+> 纠正:项目最终没有使用alipay-sdk-pythoy 进行签名和验签。而是使用alipay_web/utils/alipay.py模块
 
 ## 简单业务流程
 1. 用户通过网页发起商品结算支付请求
