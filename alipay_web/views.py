@@ -56,7 +56,7 @@ def pay_order(request):
 
     # 根据订单信息，生成重定向url
     pay_obj = alipay()
-    # print(pay_obj.app_notify_url, pay_obj.return_url)
+    print(pay_obj.app_notify_url, pay_obj.return_url)
     query_params = pay_obj.direct_pay(subject=suject_title,
                                       out_trade_no=order_id,
                                       total_amount=money)
@@ -113,4 +113,12 @@ def async_notify(request):
 
 
 def pay_result(request):
-    return redirect(to='http://www.baidu.com')
+    data = request.GET.dict()
+    print('同步回调参数:', data)
+    sign = data.pop('sign')
+    alipay_obj = alipay()
+    verify_status = alipay_obj.verify(data, signature=sign)
+    if verify_status:
+        return HttpResponse('支付成功！')
+    # return redirect(to='http://www.baidu.com')
+    return HttpResponse('验签失败！异常支付！')

@@ -22,7 +22,7 @@ appid = '2016092200572114'
 alipay_gateway = 'https://openapi.alipaydev.com/gateway.do'
 ali_pub_key_path = os.path.join(os.path.join(BASE_DIR, 'secret_key'), '支付宝沙箱公钥.txt')  # 支付宝公钥，用于验签
 app_private_key_path = os.path.join(os.path.join(BASE_DIR, 'secret_key'), '应用私钥2048.txt')  # 用户私钥，用于签名
-callback_pre_url = 'http://127.0.0.1:8000'
+callback_pre_url = 'http://127.0.0.1:8000'  # 注意拼接时的/杠有没有多加
 
 if __name__ == '__main__':
     print(ali_pub_key_path, app_private_key_path)
