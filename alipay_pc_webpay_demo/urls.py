@@ -13,9 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.urls import re_path
+
+from alipay_web import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    re_path('pay/$', views.pay_order, name='pay'),
+    re_path('pay_notify/', views.async_notify, name='pay_notify'),
+    re_path('pay_result/$', views.pay_result, name='pay_result')
 ]
+
+

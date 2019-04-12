@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付</title>
+</head>
+<body>
+<h3>支付</h3>
+<form action="{% url 'pay' %}" method="post" enctype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <label for="money">支付金额：</label>
+    <input type="text" id="money" name="money">
+    <input type="submit" value="去支付">
+</form>
+</body>
+</html>
