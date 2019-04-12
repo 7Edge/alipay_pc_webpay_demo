@@ -80,5 +80,30 @@
  }
 ```
 
+### 同步回调GET请求参数
+```
+{'charset': 'utf-8',
+ 'out_trade_no': 'e28abfa3-47c4-40cc-969f-f574e0c494b4', 
+ 'method': 'alipay.trade.page.pay.return', 
+ 'total_amount': '10001.11', 
+ 'sign': 'lvaSmCjMwQ9MK6b4ukklE1gPBjm0M1nJGXUgnhWXva63F4ZXPl8xU1rjSedDdXy5QrzmV2elHitwzJfEeIXpbviQ3gOfbeByXKyRrxyit4/F+Vs9LVK7DdVnN0rdpMs7CQCGy2lNhPq+D4vlYXIJFWjRZXK3Spb7AO1y3UltmEaKBX3G5GjJYt2eb0op0QCDNs3ycw9s9DqxDD0xWBrA1731mBYo9Vojmj0ixZZVNH140uMZE/9BV38637uEPYwy9UPNK9y2lA1XNXpRAWjVbp/VmPtRBCmvOF8tU9wfkQsXkZFxZ77km6NKnvpY8XsVeBUK8sUrN1Z8bIgPuYzrmQ==', 
+ 'trade_no': '2019041222001454581000011474',
+ 'auth_app_id': '2016092200572114', 
+ 'version': '1.0', 
+ 'app_id': '2016092200572114',
+ 'sign_type': 'RSA2',
+ 'seller_id': '2088102176803381', 
+ 'timestamp': '2019-04-12 10:00:24'
+ }
+```
+
 ## 项目运行部署
 1. 必须在公网，因为支付宝时公网回调。建议购买一个ECS开发测试
+2. 安装pipenv： pip install --user pipenv
+3. 进入项目根目录
+4. 创建python虚拟环境和安装依赖： pipenv install
+5. 配置数据库
+6. 配置支付相关配置：在alipay_web/conf/conf.py 文件中。（涉及自己生成存储RSA公私钥）
+7. 在项目根目录下，进入虚拟环境：pipenv shell
+8. 配置好数据库后进行数据迁移：python manage.py makemigrations;python manage.py migrate
+9. 运行项目： python manage.py runserver 0.0.0.0:80
